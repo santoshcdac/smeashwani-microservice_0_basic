@@ -52,10 +52,14 @@
 
 	<build>
 		<plugins>
+			<!-- mvn  spring-boot:build-image -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<image>
+						<name>smeashwani/${project.artifactId}:dev</name>
+					</image>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -64,6 +68,18 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<!-- mvn compile jib:dockerBuild -->
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.3.2</version>
+				<configuration>
+					<to>
+						<image>smeashwani/${project.artifactId}:dev</image>
+					</to>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 

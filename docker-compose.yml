@@ -17,8 +17,9 @@ services:
     networks:
       - productapp-network
   product-app:
-    build: 
-      context: product
+    image: smeashwani/product:dev
+    #build: 
+    #  context: product
     container_name: product-app.com
     ports: 
       - "8881:8888"
