@@ -2,7 +2,6 @@ package com.training.product.controller;
 
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +28,7 @@ public class ProductController {
 	public ResponseEntity<ProductEntity> save(@RequestBody ProductModel data) {
 		ProductEntity save = productService.save(data);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(save.getId()).toUri();
-		return ResponseEntity.created(location).build();
+		return ResponseEntity.created(location).body(save);
 	}
 	
 	@GetMapping("/{id}")
