@@ -34,8 +34,7 @@ public class ProductController {
 	
 	@GetMapping("/{id}")
 	public ProductEntity findById(@PathVariable Long id) {
-		Optional<ProductEntity> findById = productService.findById(id);
-		return findById.isPresent()? findById.get(): null;
+		return productService.findById(id);
 	}
 	
 	@GetMapping
@@ -45,6 +44,4 @@ public class ProductController {
 		findAll.forEach(item -> list.add(item));
 		return list;
 	}
-	
-	
 }
