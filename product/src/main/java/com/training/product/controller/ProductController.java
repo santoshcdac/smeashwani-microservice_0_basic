@@ -29,7 +29,7 @@ public class ProductController {
 	public ResponseEntity<ProductEntity> save(@RequestBody ProductModel data) {
 		ProductEntity save = productService.save(data);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(save.getId()).toUri();
-		return ResponseEntity.created(location).build();
+		return ResponseEntity.created(location).body(save);
 	}
 	
 	@GetMapping("/{id}")
