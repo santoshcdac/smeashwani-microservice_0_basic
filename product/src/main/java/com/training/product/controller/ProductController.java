@@ -2,11 +2,8 @@ package com.training.product.controller;
 
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +17,8 @@ import com.training.product.entity.ProductEntity;
 import com.training.product.model.ProductModel;
 import com.training.product.service.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -28,7 +27,7 @@ public class ProductController {
 	ProductService productService;
 	
 	@PostMapping
-	public ResponseEntity<ProductEntity> save(@RequestBody ProductModel data) {
+	public ResponseEntity<ProductEntity> save(@Valid @RequestBody ProductModel data) {
 		ProductEntity save = productService.save(data);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(save.getId()).toUri();
 		return ResponseEntity.created(location).body(save);
