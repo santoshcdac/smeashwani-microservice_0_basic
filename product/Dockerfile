@@ -17,4 +17,4 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 # Docker run -it -p 8881:8888 smeashwani/product:dev
 # Docker run -it -p 8882:8888 smeashwani/product:dev
 # push image to hub.docker.com , must be login
-# Docker push 
+# Docker push
