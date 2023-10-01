@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,19 +31,19 @@ public class ProductController {
 	public ResponseEntity<ProductEntity> save(@RequestBody ProductModel data) {
 		ProductEntity save = productService.save(data);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(save.getId()).toUri();
-		return ResponseEntity.created(location).build();
+		return ResponseEntity.created(location).body(save);
 	}
 	
 	@GetMapping("/{id}")
-	public ProductEntity findById(@PathVariable Long id) {
-		return productService.findById(id);
+	public ResponseEntity<ProductEntity> findById(@PathVariable Long id) {
+		return ResponseEntity.ok().body(productService.findById(id));
 	}
 	
 	@GetMapping
-	public ArrayList<ProductEntity> getAll() {
-		ArrayList<ProductEntity> list = new ArrayList();
+	public ResponseEntity<ArrayList<ProductEntity>> getAll() {
+		ArrayList<ProductEntity> list = new ArrayList<ProductEntity>();
 		Iterable<ProductEntity> findAll = productService.findAll();
 		findAll.forEach(item -> list.add(item));
-		return list;
+		return ResponseEntity.ok().body(list);
 	}
 }
