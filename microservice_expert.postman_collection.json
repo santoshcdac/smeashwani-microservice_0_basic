@@ -29,7 +29,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Guest\",\r\n    \"description\": \"Guest description\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Gu\",\r\n    \"description\": \"Guest description\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
