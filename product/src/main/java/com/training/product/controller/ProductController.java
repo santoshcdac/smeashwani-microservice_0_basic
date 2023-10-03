@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,10 +42,9 @@ public class ProductController {
 		return ResponseEntity.ok().body(productService.findById(id));
 	}
 
-	@GetMapping
+	
+	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE ,MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<ArrayList<ProductEntity>> getAll() {
 		return ResponseEntity.ok().body(productService.findAll());
 	}
-	
-
 }
