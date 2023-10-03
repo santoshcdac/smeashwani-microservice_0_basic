@@ -1,5 +1,6 @@
 package com.training.product.service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -16,14 +17,19 @@ public class ProductService {
 	@Autowired
 	ProductRepo repo;
 	
-	public ProductEntity save(ProductModel d){
+	public ProductModel save(ProductModel data){
 		ProductEntity proEntity = new ProductEntity();
-		BeanUtils.copyProperties(d, proEntity);
-		return repo.save(proEntity);
+		BeanUtils.copyProperties(data, proEntity);
+		proEntity = repo.save(proEntity);
+		BeanUtils.copyProperties(proEntity, data);
+		return data;
 	}
 	
-	public Iterable<ProductEntity>  findAll() {
-		return repo.findAll();
+	public ArrayList<ProductEntity> findAll() {
+		Iterable<ProductEntity> findAll = repo.findAll();
+		ArrayList<ProductEntity> list = new ArrayList<ProductEntity>();
+		findAll.forEach(item -> list.add(item));
+		return list;
 	}
 	
 	public ProductEntity findById(Long id) {
