@@ -1,0 +1,31 @@
+2023-10-03 15:11:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCTENTITY" not found; SQL statement:
+INSERT INTO ProductEntity (id, name, description) VALUES (-1, 'Guest1', 'Guest Description 1') [42102-214]
+2023-10-03 15:13:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table ProductEntity (id int not null AUTO_INCREMENT,[*]"; expected "identifier"; SQL statement:
+create table ProductEntity (id int not null AUTO_INCREMENT, [42001-214]
+2023-10-03 15:13:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500) PRIMARY KEY [*]( ID ) )"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500) PRIMARY KEY ( ID ) ) [42001-214]
+2023-10-03 15:13:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table ProductEntity (id int not null AUTO_INCREMENT, [*]\\\000aname varchar(100) not null, \\\000adescription varchar(500) \\\000aPRIMARY KEY ( ID ) \\\000a)"; SQL statement:
+create table ProductEntity (id int not null AUTO_INCREMENT, \
+name varchar(100) not null, \
+description varchar(500) \
+PRIMARY KEY ( ID ) \
+) [42000-214]
+2023-10-03 15:14:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500) PRIMARY KEY [*]( ID ))"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500) PRIMARY KEY ( ID )) [42001-214]
+2023-10-03 15:14:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500) PRIMARY KEY [*]( id ))"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500) PRIMARY KEY ( id )) [42001-214]
+2023-10-03 15:16:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create [*]database product_db"; expected "OR REPLACE, FORCE, VIEW, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, DATATYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMP, TEMPORARY, TABLE, SYNONYM, UNIQUE, HASH, SPATIAL, INDEX"; SQL statement:
+create database product_db [42001-214]
+2023-10-03 15:16:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]\\create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500), PRIMARY KEY ( id ))"; SQL statement:
+\create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500), PRIMARY KEY ( id )) [42000-214]
+2023-10-03 15:16:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCTENTITY" already exists; SQL statement:
+create table ProductEntity (id int not null AUTO_INCREMENT, name varchar(100) not null, description varchar(500), PRIMARY KEY ( id )) [42101-214]
