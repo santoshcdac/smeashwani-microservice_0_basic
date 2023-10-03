@@ -11,5 +11,6 @@ public class ServerDetails {
 	String port;
 	String systemname;
 	String name;
+	String i18nMessage;
 	
 }
