@@ -25,10 +25,14 @@ public class ProductService {
 		return data;
 	}
 	
-	public ArrayList<ProductEntity> findAll() {
+	public ArrayList<ProductModel> findAll() {
 		Iterable<ProductEntity> findAll = repo.findAll();
-		ArrayList<ProductEntity> list = new ArrayList<ProductEntity>();
-		findAll.forEach(item -> list.add(item));
+		ArrayList<ProductModel> list = new ArrayList<ProductModel>();
+		findAll.forEach(item -> {
+			ProductModel productModel = new ProductModel();
+			BeanUtils.copyProperties(item, productModel);
+			list.add(productModel);
+			});
 		return list;
 	}
 	
