@@ -1,6 +1,5 @@
 package com.training.product.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.training.product.model.ProductModel;
+import com.training.product.model.RestrictedView;
 import com.training.product.service.ProductService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -53,14 +54,9 @@ public class ProductController {
 		return ResponseEntity.ok().body(productService.findAll());
 	}
 
+	@JsonView(RestrictedView.ProductModelResView.class)
 	@GetMapping("/allProduct")
-	public ResponseEntity<List<MappingJacksonValue>> getAllProduct() {
-		FilterProvider filters = new SimpleFilterProvider().addFilter("productFilterDesc",SimpleBeanPropertyFilter.filterOutAllExcept("name", "id"));
-		List<MappingJacksonValue> list = productService.findAll().stream().map(item -> {
-			MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(item);
-			mappingJacksonValue.setFilters(filters);
-			return mappingJacksonValue;
-		}).toList();
-		return ResponseEntity.ok().body(list);
+	public ResponseEntity<List<ProductModel>> getAllProduct() {
+		return ResponseEntity.ok().body(productService.findAll());
 	}
 }
