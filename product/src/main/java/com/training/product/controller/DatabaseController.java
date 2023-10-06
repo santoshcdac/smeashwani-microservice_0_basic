@@ -16,12 +16,11 @@ public class DatabaseController {
 	@Autowired
 	private Database database;
 	
-	@GetMapping("/")
+	@GetMapping
 	public ResponseEntity<DatabaseDetails> getDetails() {
-		DatabaseDetails databaseDetail = DatabaseDetails.builder()
-		.name(database.getName())
-		.password(database.getPassword())
-		.build();
-		return ResponseEntity.ok().body(databaseDetail);
+		DatabaseDetails dbDetails =new DatabaseDetails();
+				dbDetails.setName(database.getName());
+				dbDetails.setPassword(database.getPassword());
+		return ResponseEntity.ok(dbDetails);
 	}
 }
