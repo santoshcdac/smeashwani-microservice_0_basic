@@ -17,6 +17,8 @@ public class HomeController {
 	@Autowired
 	private MessageSource messageSource;
 	
+	
+	
 	@Value("${server.port}")
 	private String port;
 	

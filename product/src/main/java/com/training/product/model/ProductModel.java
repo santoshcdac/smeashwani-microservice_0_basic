@@ -1,11 +1,8 @@
 package com.training.product.model;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-//@JsonFilter("productFilterDesc")
 @Data
 public class ProductModel {
 	
