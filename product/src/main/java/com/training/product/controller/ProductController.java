@@ -46,7 +46,7 @@ public class ProductController {
 			@ApiResponse(responseCode = "404", description = "Product is not exists")
 	})
 	@GetMapping("/{id}")
-	public ResponseEntity<ProductEntity> findById(@PathVariable Long id) {
+	public ResponseEntity<ProductModel> findById(@PathVariable Long id) {
 		return ResponseEntity.ok().body(productService.findById(id));
 	}
 

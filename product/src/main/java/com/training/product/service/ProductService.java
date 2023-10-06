@@ -32,12 +32,16 @@ public class ProductService {
 		return list;
 	}
 	
-	public ProductEntity findById(Long id) {
+	public ProductModel findById(Long id) {
 		Optional<ProductEntity> findById = repo.findById(id);
-		if(findById.isPresent())
-			return findById.get();
-		else
+		if(findById.isPresent()) {
+			ProductModel productModel = new ProductModel();
+			BeanUtils.copyProperties(findById.get(), productModel);
+			return productModel;
+		}
+		else {
 			throw new ProductNotFoundException("Product not Exists");
+		}
 		 
 	}
 }
