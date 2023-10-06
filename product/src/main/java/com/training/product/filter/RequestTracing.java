@@ -12,8 +12,6 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
-@Component
-@Order(1)
 @Slf4j
 public class RequestTracing implements Filter {
 	@Override
