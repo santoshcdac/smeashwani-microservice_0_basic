@@ -50,12 +50,6 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
-		<!-- hateoas -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-hateoas</artifactId>
-		</dependency>
-
 		<!-- h2 database -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

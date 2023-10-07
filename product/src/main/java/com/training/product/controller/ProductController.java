@@ -3,10 +3,6 @@ package com.training.product.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +28,7 @@ public class ProductController {
 	@PostMapping
 	public ResponseEntity<ProductModel> save(@Valid @RequestBody ProductModel data) {
 		ProductModel product = productService.save(data);
-		Link selfLink = WebMvcLinkBuilder.linkTo(ProductController.class).slash(product.getId()).withSelfRel();
-		product.add(selfLink);
-		return ResponseEntity.created(selfLink.toUri()).body(product);
+		return ResponseEntity.created(null).body(product);
 	}
 
 	@GetMapping("/{id}")
