@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.training.product.configuration.Database;
 import com.training.product.model.DatabaseDetails;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/database")
+@Slf4j
 public class DatabaseController {
 
 	@Autowired
@@ -18,6 +21,7 @@ public class DatabaseController {
 	
 	@GetMapping
 	public ResponseEntity<DatabaseDetails> getDetails() {
+		log.info("DatabaseController - getDetails");
 		DatabaseDetails dbDetails =new DatabaseDetails();
 				dbDetails.setName(database.getName());
 				dbDetails.setPassword(database.getPassword());
